@@ -7,20 +7,28 @@ namespace EmpWage
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage computation");
-            int isPresent = 1;
+            int isFullTime = 1;
+            int isPartTime = 2;
             int empRatePerHr = 20;
-            int empDailyHr = 8;
+            int empDailyHr = 0;
+            int perDaySalary = 0;
             Random randomNumber = new Random();
             int empCheck = randomNumber.Next(0, 2);
             Console.WriteLine(empCheck);
-            if (empCheck == isPresent)
-            {
-                Console.WriteLine("present");
-                int perDaySalary = empRatePerHr * empDailyHr;
-                Console.WriteLine("Employee Per Day salary = " + perDaySalary);
-            }
-            else
-                Console.WriteLine("absent");
-        }
+			switch ((int)empCheck)
+			{
+				case 1:
+					empDailyHr = 8;
+					Console.WriteLine("Part time Employee");
+					perDaySalary = empRatePerHr * empDailyHr;
+					Console.WriteLine("Employee per day salary = " + perDaySalary);
+					break;
+				default:
+					empDailyHr = 0;
+					perDaySalary = 0;
+					Console.WriteLine("Employee per day salary = " + perDaySalary);
+					break;
+			}//switch
+		}
     }
 }
