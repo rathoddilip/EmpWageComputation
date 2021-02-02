@@ -2,39 +2,44 @@
 
 namespace EmpWage
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Welcome to Employee Wage computation");
-            int isFullTime = 1;
-            int isPartTime = 2;
-            int empRatePerHr = 20;
-            int empDailyHr = 0;
-            int perDaySalary = 0;
-            Random randomNumber = new Random();
-            int empCheck = randomNumber.Next(0, 3);
-            Console.WriteLine(empCheck);
-			switch ((int)empCheck)
+	class Program
+	{
+		const int isFullTime = 1;
+		const int isPartTime = 2;
+		static void Main(string[] args)
+		{
+			Console.WriteLine("Welcome to Employee Wage computation");
+
+			int empRatePerHr = 20;
+			int empDailyHr = 0;
+			int perDaySalary = 0;
+			int mothWorkingDay = 20;
+			int monthlySalary = 0;
+			for (int i = 1; i <= mothWorkingDay; i++)
 			{
-				case 1:
-					empDailyHr = 10;
-					Console.WriteLine("Full time Employee");
-					perDaySalary = empRatePerHr * empDailyHr;
-					Console.WriteLine("Employee per day salary = " + perDaySalary);
-					break;
-				case 2:
-					empDailyHr = 8;
-					Console.WriteLine("Part time Employee");
-					perDaySalary = empRatePerHr * empDailyHr;
-					Console.WriteLine("Employee per day salary = " + perDaySalary);
-					break;
-				default:
-					empDailyHr = 0;
-					perDaySalary = 0;
-					Console.WriteLine("Employee per day salary = " + perDaySalary);
-					break;
-			}//switch
+				Random randomNumber = new Random();
+				int empCheck = randomNumber.Next(0, 3);
+				Console.WriteLine(empCheck);
+				switch ((int)empCheck)
+				{
+					case isFullTime:
+						empDailyHr = 8;
+						break;
+
+					case isPartTime:
+						empDailyHr = 4;
+						break;
+
+					default:
+						empDailyHr = 0;
+						break;
+
+				}//switch
+				perDaySalary = empRatePerHr * empDailyHr;
+
+				monthlySalary = perDaySalary + monthlySalary;
+			}
+			Console.WriteLine("Monthly salary: " + monthlySalary);
 		}
-    }
+	}
 }
