@@ -15,11 +15,12 @@ namespace EmpWage
 			int perDaySalary = 0;
 			int mothWorkingDay = 20;
 			int monthlySalary = 0;
+			int monthlyHrs = 0;
 			for (int i = 1; i <= mothWorkingDay; i++)
 			{
 				Random randomNumber = new Random();
 				int empCheck = randomNumber.Next(0, 3);
-				Console.WriteLine(empCheck);
+				//Console.WriteLine(empCheck);
 				switch ((int)empCheck)
 				{
 					case isFullTime:
@@ -35,9 +36,14 @@ namespace EmpWage
 						break;
 
 				}//switch
+				
+				monthlyHrs = monthlyHrs + empDailyHr;
+				Console.WriteLine("Working days : " +i);
+				Console.WriteLine("MonthlyHrsWise : "+ monthlyHrs);
 				perDaySalary = empRatePerHr * empDailyHr;
-
+				Console.WriteLine(perDaySalary);
 				monthlySalary = perDaySalary + monthlySalary;
+
 			}
 			Console.WriteLine("Monthly salary: " + monthlySalary);
 		}
